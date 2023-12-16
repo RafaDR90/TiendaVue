@@ -1,0 +1,28 @@
+:root {
+  --color-black: black;
+  --color-black-transparent:rgba(0, 0, 0, 0.562);
+  --color-darkGrey:rgb(59, 59, 59);
+  --color-white: white;
+  --color-NaranjaSeleccion: #ff4500;
+  --color-grisClaro:rgb(221, 221, 221);
+  --color-rojoOferta:rgb(204, 0, 0);
+  --logo-size-header: 15vw;
+  --menu-size-header: 3vw;
+  --font-size-header: clamp(2rem, 4vw, 2.5rem);
+  --listaMenu-size-header:27vw;
+  --carrito-margin-header:2vw;
+  --size-iconos-header:50px;
+  --color-hoverNavideño:#00ff00;
+}
+  
+  @media (max-width: 768px) {
+    :root {
+      --logo-size-header: 15vw;
+      --menu-size-header: 8vw;
+      --font-size-header: 4vw;
+      --color-black: yellow;
+      --listaMenu-size-header:35vw;
+      --carrito-margin-header:5vw;
+      --size-iconos-header:35px;
+    }
+  }

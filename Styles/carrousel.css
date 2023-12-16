@@ -1,0 +1,43 @@
+#carrusel {
+    margin-top: 3vh;
+    background-image:url(../Img/fondoCarrusel.png);
+    background-size:cover;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    height: 40vh;
+    align-items: center;
+    box-shadow: 0 0 10px var(--color-black); 
+
+}
+
+.carrusel-wrapper{
+    display: flex;  
+    transition: transform 0.5s ease-in-out;
+    height: 90%;
+}
+
+.carrusel-item{
+    display: flex;
+    justify-content: center;
+    min-width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;  /* Evita que los elementos se encogen para ajustarse al contenedor */
+}
+.carrusel-item img{
+    box-shadow: 0px 0px 10px var(--color-black);
+    border-radius: 5px;
+    height: 100%;
+    width: auto;
+}
+.textoImagen{
+    bottom: 0;
+    background-color: var(--color-black-transparent);
+    padding: 0.15vw;
+    font-weight: bold;
+    border-radius: 5px;
+    position: absolute;
+    color: var(--color-white);
+    width:max-content;
+    z-index: 2;
+}

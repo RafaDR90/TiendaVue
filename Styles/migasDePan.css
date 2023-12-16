@@ -1,0 +1,12 @@
+.migasDePan{
+    margin-left: 1vw;
+    margin-top: 2vh;
+    align-self: start;
+}
+.migasDePan button:hover{
+    color: var(--color-NaranjaSeleccion);
+}
+.migasDePan span{
+    font-weight:bold;
+    font-size: 0.7rem;
+}

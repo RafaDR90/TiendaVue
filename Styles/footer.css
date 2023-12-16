@@ -1,0 +1,57 @@
+footer {
+    margin-top: 3vh;
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    background-color: var(--color-black);
+    justify-content: space-between;
+}
+
+.linksContainer-footer {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alineacion__linksContainer-footer,
+.metodosPago__Container,
+.redesSociales__Container {
+    text-align: left;
+}
+.alineacion__linksContainer-footer{
+    width: 80%;
+}
+
+footer h3 {
+    margin-bottom: 10px;
+    color: var(--color-white);
+}
+
+footer a {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--color-grisClaro);
+    text-decoration: none;
+}
+footer a:hover{
+    color: var(--color-white);
+    text-decoration: underline;
+}
+
+.iconosContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.icono__container img {
+    width: 30px;
+    height: auto;
+}
+
+@media (max-width: 768px){
+    footer{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2,1fr);
+    }
+}

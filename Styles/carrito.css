@@ -1,0 +1,50 @@
+.carritoContainer {
+    /* Estilos para el contenedor del carrito */
+    margin: 2vw;
+  }
+  
+  .productoEnCarrito {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .imagenProducto {
+    width: 100px; /* Ajustar según sea necesario */
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  .infoProducto {
+    flex-grow: 1;
+  }
+  
+  .cantidadProducto {
+    display: flex;
+    align-items: center;
+  }
+  .cantidadProducto button:hover{
+    background-color:var(--color-grisClaro); 
+    box-shadow: 0 0 2px var(--color-black);
+  }
+  
+  .botonCantidad {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .botonComprar {
+    background-color: var(--color-black);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  .botonComprar:hover{
+    background-color:var(--color-darkGrey); 
+    box-shadow: 0 0 20px var(--color-black);
+  }
+  

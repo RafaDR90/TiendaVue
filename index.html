@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Styles/Normalize.css">
+    <link rel="stylesheet" href="./Styles/Variables.css">
+    <link rel="stylesheet" href="./Styles/Header.css">
+    <link rel="stylesheet" href="./Styles/carrousel.css">
+    <link rel="stylesheet" href="./Styles/Loading.css">
+    <link rel="stylesheet" href="./Styles/principal.css">
+    <link rel="stylesheet" href="./Styles/footer.css">
+    <link rel="stylesheet" href="./Styles/ItemsContainer.css">
+    <link rel="stylesheet" href="./Styles/migasDePan.css">
+    <link rel="stylesheet" href="./Styles/Detalle.css">
+    <link rel="stylesheet" href="./Styles/carrito.css">
+    <!-- Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Tu archivo principal de Vue 3 -->
+    <script type="module" src="./App.js">
+      import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+      import App from './App.js';
+
+      window.onload = () => {
+        createApp({
+            components: {
+              app,
+            },
+          }).mount('#app');
+      };
+  </script>
+</head>
+<body id="app">
+    <header>
+        <div class="menuHamburguesaContainer">
+            <div class="barras__MenuAmburguesa">
+                <div class="Barra1"></div>
+                <div class="Barra2"></div>
+                <div class="Barra3"></div>
+            </div>
+            <div class="listaMenu">
+                <ul class="lista_menuHamburguesa">
+                    <li><button @click="changuePage('principal')" class="buttonInicio">Inicio</button></li>
+                    <li><button @click="changuePage('hombre')" id="buttonHombre">Hombre</button></li>
+                    <li><button @click="changuePage('mujer')" id="buttonMujer">Mujer</button></li>
+                    <li><button @click="changuePage('complementos')" id="buttonComplementos">Complementos</button></li>
+                    <li><button @click="changuePage('electronica')" id="buttonElectronica">Electronica</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="logoPrincipalContainer"><button @click="changuePage('principal')" class="buttonInicio" class="enlace__LogoPrincipal" ><img src="./Img/fashionLogo.png" alt="Logo"></button></div>
+        <div class="menuLoginContainer">
+            <a class="linksNav" href="">Login</a>
+            <button class="linkCarrito" href=""><img @click="changuePage('carrito')" src="./Img/carrito.png" alt=""></button><span class="cantidad">
+              <span class="circle-badge">{{sumaCantidadesCarrito[0]}}</span>
+              <p>Total: </p>
+              <p style="color: green;">{{sumaCantidadesCarrito[1]}}€</p>
+            </span>
+        </div>
+    </header>
+    <main>
+      <!--PRINCIPAL-->
+      <section v-if="pagina=='principal'" class="principal">
+        <div id="carrusel" class="carousel slide">
+          <div class="carrusel-wrapper" @click="carrouselClick">
+            <div v-for="(producto, index) in productosCarrusel" :key="producto.id" class="carrusel-item">
+              <p class="textoImagen">{{ producto.title }}</p>
+              <img :src="producto.image" class="d-block w-100" alt="Producto">
+            </div>
+          </div>
+        </div>
+
+        <div class="ofertaPrenda">
+          <div class="imgOfertaIz">
+              <img :src="productosCarrusel[0] ? productosCarrusel[0].image : 'N/A'" alt="Imagen de prenda en oferta">
+          </div>
+          <div class="infoOfertaIz" >
+              <div class="infoOfertaTop">
+                  <h2>{{ productosCarrusel[0] ? productosCarrusel[0].title : 'N/A' }}</h2>
+                  <h4>{{ productosCarrusel[0] ? productosCarrusel[0].description : 'N/A' }}</h4>
+              </div>
+              <div class="infoOfertaBot">
+                  <h2 class="porcentageOferta" >¡20% de descuento!</h3>
+                  <p class="precio">{{ productosCarrusel[0] ? productosCarrusel[0].price : 'N/A' }} €</p>
+                  <button class="comprar-button">Comprar</button>
+              </div>
+          </div>
+        </div>
+
+        <div class="ofertaPrenda">
+          <div class="imgOfertaDer">
+              <img :src="productosCarrusel[2] ? productosCarrusel[2].image : 'N/A'" alt="Imagen de prenda en oferta">
+          </div>
+          <div class="infoOfertaDer" >
+              <div class="infoOfertaTop">
+                <h2>{{ productosCarrusel[2] ? productosCarrusel[2].title : 'N/A' }}</h2>
+                <h4>{{ productosCarrusel[2] ? productosCarrusel[2].description : 'N/A' }}</h4>
+              </div>
+              <div class="infoOfertaBot">
+                  <h2 class="porcentageOferta" >¡30% de descuento!</h3>
+                  <p class="precio">{{ productosCarrusel[2] ? productosCarrusel[2].price : 'N/A' }} €</p>
+                  <button class="comprar-button">Comprar</button>
+              </div>
+          </div>
+  </div>
+      </section>
+<!--CARRITO-->
+<section v-if="pagina=='carrito'" class="carritoContainer">
+  <div class="migasDePan"><button @click="changuePage('principal')">Inicio </button></div>
+  <div v-for="producto in cart" :key="producto.id" class="productoEnCarrito">
+    <img :src="producto.image" alt="Imagen del producto" class="imagenProducto">
+    <div class="infoProducto">
+      <h3>{{ producto.title }}</h3>
+      <div class="cantidadProducto">
+        <button @click="deleteFromCarrito(producto.id)" class="botonCantidad">-</button>
+        <span>&nbsp;&nbsp;{{ producto.cantidad }}&nbsp;&nbsp; </span>
+        <button @click="addFromCarrito(producto.id)" class="botonCantidad">+</button>
+      </div>
+    </div>
+  </div>
+  <button @click="vaciarCarrito" class="botonComprar">Comprar</button>
+</section>
+
+<!--DETALLE-->
+<section v-if="pagina=='detalle'" class="detalleContainer">
+  <div class="migasDePan"><button @click="changuePage('principal')">Inicio </button><span> > </span><button @click="changuePage(productoDetalle.pagina)"> {{productoDetalle.pagina}}</button></div>
+  <h2 class="tituloDetalle" v-if="productoDetalle!=null">{{productoDetalle.title}}</h2>
+  <div class="containerImgs">
+      <div class="containerImg"><img v-if="productoDetalle!=null" :src="productoDetalle.image" alt="Imagen producto"></div>
+  </div>
+  <p class="detalleDescripcion" v-if="productoDetalle!=null">{{productoDetalle.description}}</p>
+  <p class="valoracionesTitulo">Valoraciones:</p>
+  <div class="Stars" :style="`--rating: ${productoDetalle.rating.rate};`" aria-label="Rating of this product is 2.3 out of 5."></div>
+  <span class="cantidadValoraciones">de {{productoDetalle.rating.count}} valoraciones</span>
+  <p class="precio" v-if="productoDetalle!=null">{{productoDetalle.price}} €</p>
+  <button @click="addToCart(productoDetalle.id)" class="buttonAddCar">Añadir al carrito</button>
+</section>
+
+<!--HOMBRE-->
+      <section v-if="pagina=='hombre'" class="hombre">
+        <div class="migasDePan"><button @click="changuePage('principal')">Inicio </button></div>
+            <h2 class="tituloSection" >Coleccion hombre</h2>
+            <div class="ordenacion">
+              <input type="radio" v-model="ordenarHombre" value="nombre-asc" id="nombre-asc" name="ordenar">
+              <label for="nombre-asc">Nombre ascendente</label>
+              <input type="radio" v-model="ordenarHombre" value="nombre-desc" id="nombre-desc" name="ordenar">
+              <label for="nombre-desc">Nombre descendente</label>
+              <input type="radio" v-model="ordenarHombre" value="precio-asc" id="precio-asc" name="ordenar">
+              <label for="precio-asc">Menor precio</label>
+              <input type="radio" v-model="ordenarHombre" value="precio-des" id="precio-des" name="ordenar">
+              <label for="precio-des">Mayor precio</label>
+            </div>
+            <div class="itemsContainer">
+                <div class="card" v-for="(item, index) in productosHombre" :key="index">
+                    <img :src="item.image" alt="Producto">
+                    <div class="card-content">
+                        <div class="card-title">{{item.title}}</div>
+                        <div class="card-price">{{item.price}} €</div>
+                        <button @click="mostrarDetalle(item.id,'hombre')"  class="buy-button">Ver mas</button>
+                    </div>
+                </div>
+            </div>
+      </section>
+
+<!--MUJER-->
+      <section v-if="pagina=='mujer'" class="mujer">
+          <div class="migasDePan"><button @click="changuePage('principal')">Inicio </button></div>
+              <h2 class="tituloSection" >Coleccion mujer</h2>
+              <div class="ordenacion">
+                <input type="radio" v-model="ordenarMujer" value="nombre-asc" id="nombre-asc" name="ordenar">
+                <label for="nombre-asc">Nombre ascendente</label>
+                <input type="radio" v-model="ordenarMujer" value="nombre-desc" id="nombre-desc" name="ordenar">
+                <label for="nombre-desc">Nombre descendente</label>
+                <input type="radio" v-model="ordenarMujer" value="precio-asc" id="precio-asc" name="ordenar">
+                <label for="precio-asc">Menor precio</label>
+                <input type="radio" v-model="ordenarMujer" value="precio-des" id="precio-des" name="ordenar">
+                <label for="precio-des">Mayor precio</label>
+              </div>
+              <div class="itemsContainer">
+                  <div class="card" v-for="(item, index) in productosMujer" :key="index">
+                      <img :src="item.image" alt="Producto">
+                      <div class="card-content">
+                          <div class="card-title">{{item.title}}</div>
+                          <div class="card-price">{{item.price}} €</div>
+                          <button @click="mostrarDetalle(item.id,'mujer')"  class="buy-button">Ver mas</button>
+                      </div>
+                  </div>
+              </div>
+      </section>
+
+<!--COMPLEMENTOS-->
+      <section v-if="pagina=='complementos'" class="complementos">
+        <div class="migasDePan"><button @click="changuePage('principal')">Inicio </button></div>
+            <h2 class="tituloSection" >Complementos</h2>
+            <div class="ordenacion">
+              <input type="radio" v-model="ordenarComplementos" value="nombre-asc" id="nombre-asc" name="ordenar">
+              <label for="nombre-asc">Nombre ascendente</label>
+              <input type="radio" v-model="ordenarComplementos" value="nombre-desc" id="nombre-desc" name="ordenar">
+              <label for="nombre-desc">Nombre descendente</label>
+              <input type="radio" v-model="ordenarComplementos" value="precio-asc" id="precio-asc" name="ordenar">
+              <label for="precio-asc">Menor precio</label>
+              <input type="radio" v-model="ordenarComplementos" value="precio-des" id="precio-des" name="ordenar">
+              <label for="precio-des">Mayor precio</label>
+            </div>
+            <div class="itemsContainer">
+                <div class="card" v-for="(item, index) in productosComplementos" :key="index">
+                    <img :src="item.image" alt="Producto">
+                    <div class="card-content">
+                        <div class="card-title">{{item.title}}</div>
+                        <div class="card-price">{{item.price}} €</div>
+                        <button @click="mostrarDetalle(item.id,'complementos')"  class="buy-button">Ver mas</button>
+                    </div>
+                </div>
+            </div>
+      </section>
+
+<!--ELECTRONICA-->
+<section v-if="pagina=='electronica'" class="electronica">
+  <div class="migasDePan"><button @click="changuePage('principal')">Inicio </button></div>
+      <h2 class="tituloSection" >Electronica</h2>
+      <div class="ordenacion">
+        <input type="radio" v-model="ordenarElectronica" value="nombre-asc" id="nombre-asc" name="ordenar">
+        <label for="nombre-asc">Nombre ascendente</label>
+        <input type="radio" v-model="ordenarElectronica" value="nombre-desc" id="nombre-desc" name="ordenar">
+        <label for="nombre-desc">Nombre descendente</label>
+        <input type="radio" v-model="ordenarElectronica" value="precio-asc" id="precio-asc" name="ordenar">
+        <label for="precio-asc">Menor precio</label>
+        <input type="radio" v-model="ordenarElectronica" value="precio-des" id="precio-des" name="ordenar">
+        <label for="precio-des">Mayor precio</label>
+      </div>
+      <div class="itemsContainer">
+          <div class="card" v-for="(item, index) in productosElectronica" :key="index">
+              <img :src="item.image" alt="Producto">
+              <div class="card-content">
+                  <div class="card-title">{{item.title}}</div>
+                  <div class="card-price">{{item.price}} €</div>
+                  <button @click="mostrarDetalle(item.id,'electronica')"  class="buy-button">Ver mas</button>
+              </div>
+          </div>
+      </div>
+</section>
+
+<!--LOADING ICON-->
+      <div v-if="loading" class="loading">
+        <div class="spinner">
+          <div class="outer">
+            <div class="inner tl"></div>
+            <div class="inner tr"></div>
+            <div class="inner br"></div>
+            <div class="inner bl"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+<!--FOOTER-->
+    <footer>
+      <div class="linksContainer-footer">
+          <div class="alineacion__linksContainer-footer">
+              <h3>Ayuda</h3>
+              <a href="">Comprar Online</a>
+              <a href="">Pago</a>
+              <a href="">Envio</a>
+              <a href="">Devoluciones</a>
+              <a href="">Tarjeta Regalo</a>
+              <a href="">Ticket regalo</a>
+              <a href="">Solicita factura</a>
+          </div>
+      </div>
+      <div class="linksContainer-footer">
+          <div class="alineacion__linksContainer-footer">
+              <h3>Nosotros</h3>
+              <a href="">Sobre nosotros</a>
+              <a href="">Sostenibilidad</a>
+              <a href="">Trabaja con nosotros</a>
+              <a href="">Nuestras tiendas</a>
+          </div>
+      </div>
+      <div class="linksContainer-footer">
+          <div class="alineacion__linksContainer-footer">
+              <h3>Legal</h3>
+              <a href="">Politica de cookies</a>
+              <a href="">Franquicias falsas</a>
+              <a href="">Condiciones de uso</a>
+              <a href="">Aviso de privacidad</a>
+              <a href="">Estado de informacion no Financiera</a>
+          </div>
+      </div>
+      <div class="linksContainer-footer">
+          <div class="metodosPago__Container">
+              <div>
+                  <h3>Metodos de pago</h3>
+                  <div class="iconosContainer">
+                      <div class="icono__container"><img src="./Img/metodosDePago/mastercard.png" alt="MasterCard"></div>
+                      <div class="icono__container"><img src="./Img/metodosDePago/visa.png" alt="Visa"></div>
+                      <div class="icono__container"><img src="./Img/metodosDePago/paypal.png" alt="Paypal"></div>
+                  </div>
+              </div>
+          </div>
+          <div class="redesSociales__Container">
+              <h3>Redes sociales</h3>
+              <div class="iconosContainer">
+                  <div class="icono__container"><img src="./Img/redes/facebook.png" alt="Facebook"></div>
+                  <div class="icono__container"><img src="./Img/redes/instagram.png" alt="Instagram"></div>
+              </div>
+          </div>
+      </div>
+  </footer>
+</body>
+</html>

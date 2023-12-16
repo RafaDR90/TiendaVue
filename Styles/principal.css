@@ -1,0 +1,114 @@
+.bannerOfertaNavidad{
+    background-image: url('../Img/bannerOferta.jpg');
+    background-size:cover; 
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 30vw;
+    display: flex;
+    justify-content: center;
+}
+.bannerOfertaNavidad button {
+    text-decoration: underline;
+    font-weight: bold;
+    background-color: var(--color-white); 
+    height: min-content;
+    color: var(--color-black); 
+    font-size: 2.5vw;
+    padding: 0.5vw 2vw;
+    position: relative;
+    top: 5vw; 
+    
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.bannerOfertaNavidad button:hover {
+    background-color: var(--color-hoverNavideño); 
+}
+
+/*OFERETA PRENDA IZQUIERDA*/
+
+.ofertaPrenda {
+  margin-top: 2vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 10% 40% 40% 10%;
+    align-items: center; 
+  }
+  
+  
+  .imgOfertaIz {
+    width: 100%;
+    grid-column: 2 / 3; 
+    grid-row: 1 / 2; 
+  }
+  .imgOfertaIz img {
+    margin-top: 10%;
+    max-width: 90%; 
+    height: auto; 
+  }
+  
+  /* Estilos para la parte de la información */
+  .infoOfertaIz {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5%;
+    grid-column: 3 / 4; 
+    grid-row: 1 / 2; 
+  }
+  
+  /* Estilos para el botón de comprar */
+  .comprar-button {
+    background-color: var(--color-black);
+    color: var(--color-white); 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; 
+  }
+  
+  
+  .comprar-button:hover {
+    background-color: var(--color-darkGrey); 
+    box-shadow: 0 0 20px var(blac);
+  }
+  
+  
+  .infoOfertaIz h2 {
+    margin-top: 0; 
+  }
+  
+  
+  .porcentajeOferta {
+    color: var(--color-rojoOferta); 
+    font-weight: bold; 
+  }
+  .imgOfertaDer {
+    width: 100%;
+    grid-column: 3 / 4; 
+    grid-row: 1 / 2; 
+  }
+  .imgOfertaDer img {
+    margin-top: 10%;
+    max-width: 90%; 
+    height: auto; 
+  }
+  
+  .infoOfertaDer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5%;
+    grid-column: 2 / 3; 
+    grid-row: 1 / 2; 
+  }
+  .porcentageOferta{
+    color: var(--color-rojoOferta);
+  }

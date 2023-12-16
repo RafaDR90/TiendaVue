@@ -1,0 +1,190 @@
+header {
+  z-index: 7;
+  width: 100vw;
+  height:min-content;
+  box-shadow: 5px 5px 10px var(--color-black);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "menu logo login"; 
+  position:sticky ;
+  top: 0;
+  background-color: var(--color-white);
+}
+header button{
+  font-size: 2vw;
+}
+.menuHamburguesaContainer {
+    margin: 1vw;
+    grid-area: menu; 
+    width: var(--menu-size-header);
+    height: var(--menu-size-header);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .barras__MenuAmburguesa {
+    margin-left: 0.5vw;
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+  }
+  
+  .Barra1, .Barra2, .Barra3 {
+    z-index: 2;
+    width: 100%;
+    height: 1vh;
+    border-radius: 20px;
+    background-color: #333;
+    margin: 0.4vw 0;
+    transition: 0.3s;
+  }
+  
+  .menuHamburguesaContainer:hover .Barra2 {
+    opacity: 0;
+  }
+  
+  .menuHamburguesaContainer:hover .Barra1 {
+    transform: translateY(0.4vw) rotate(43deg);
+  }
+  
+  .menuHamburguesaContainer:hover .Barra3 {
+    transform: translateY(-0.4vw) rotate(-43deg);
+  }
+  
+  
+  .listaMenu{
+    display:none;
+  }
+  .lista_menuHamburguesa button:hover{
+    color: var(--color-NaranjaSeleccion);
+    cursor: pointer;
+  }
+  .menuHamburguesaContainer:hover .listaMenu {
+    z-index: 5;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top:0;
+    left:0;
+    width: var(--listaMenu-size-header);
+    height: 100vh;
+    animation: despliegaMenu 1s ease forwards;
+    box-shadow: 5px 5px 10px var(--color-black-transparent);
+  }
+  @keyframes despliegaMenu {
+    from{
+        margin-left: -30%;
+    }
+    to{
+        margin-left: 0%;
+    }
+  }
+
+  .logoPrincipal{
+    width: 2vw;
+    height: 2vw;
+  }
+  .color{
+    width: 100%;
+    height: 100%;
+  }
+ 
+
+.lista_menuHamburguesa {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lista_menuHamburguesa li {
+  margin-bottom: 13vh; 
+}
+
+.lista_menuHamburguesa a {
+  text-decoration: none;
+  color: #333;
+  font-size: var(--font-size-header);
+  transition: color 0.3s;
+}
+
+.lista_menuHamburguesa a:hover {
+  color: var(--color-NaranjaSeleccion);
+}
+.logoPrincipalContainer{
+  align-self: center;
+  justify-self: center;
+  width: var(--logo-size-header);
+  grid-area: logo; /* Asignar el área 'logo' al contenedor del logo */
+  text-align: center;
+}
+
+
+.logoPrincipalContainer img {
+  width: 100%;
+  height: auto;
+}
+
+.menuLoginContainer{
+  grid-area: login;
+  width: 20vw;
+  height: 15vh;
+  margin-right: var(--carrito-margin-header);
+  display: flex;
+  justify-self: end;
+  justify-content: flex-end; 
+  align-items: center;
+}
+
+.linkCarrito{
+  width: var(--size-iconos-header);
+  margin-left: 1vw;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-right: 2vw;
+}
+.linkCarrito img:hover{
+  padding: 0.3vw;
+  border-radius: 40px;
+  box-shadow: 0 0 10px var(--color-black); /* Agrega sombreado con color semi-transparente */
+
+}
+.linkCarrito img{
+  width: 100%;
+  height: auto;
+}
+.linksNav {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-white);
+  background-color: var(--color-black);
+  padding: 0.5vw 0.5vw; 
+  font-size: var(--font-size-header)-1; 
+  font-weight: bold; 
+  margin-right: 2vw;
+  transition: background-color 0.3s; 
+  cursor: pointer; 
+}
+
+.linksNav:hover {
+  color: var(--color-NaranjaSeleccion);
+  box-shadow: 0 0 10px var(--color-black); 
+
+}
+
+.circle-badge {
+  background-color: var(--color-NaranjaSeleccion);
+  color: var(--color-white);
+  font-weight: bold;
+  width: 24px; /* Ancho del círculo */
+  height: 24px; /* Altura del círculo */
+  border-radius: 50%; /* Para crear la forma circular */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px; /* Espacio entre el número y el círculo */
+}

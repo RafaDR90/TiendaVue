@@ -1,0 +1,21 @@
+[debug] [2023-12-13T08:20:04.354Z] ----------------------------------------------------------------------
+[debug] [2023-12-13T08:20:04.356Z] Command:       C:\Users\MyBurra\DOWNLO~1\firebase-tools-instant-win.exe C:\Users\MyBurra\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase init
+[debug] [2023-12-13T08:20:04.356Z] CLI Version:   13.0.1
+[debug] [2023-12-13T08:20:04.356Z] Platform:      win32
+[debug] [2023-12-13T08:20:04.356Z] Node Version:  v18.5.0
+[debug] [2023-12-13T08:20:04.357Z] Time:          Wed Dec 13 2023 09:20:04 GMT+0100 (GMT+01:00)
+[debug] [2023-12-13T08:20:04.357Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-13T08:20:04.363Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-13T08:20:04.364Z] > authorizing via signed-in user (rafa18220delgado@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\MyBurra\Desktop\XAMP\htdocs\Entorno Cliente\Tienda_VUE
+
