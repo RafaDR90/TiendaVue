@@ -83,7 +83,7 @@
               <div class="infoOfertaBot">
                   <h2 class="porcentageOferta" >¡20% de descuento!</h3>
                   <p class="precio">{{ productosCarrusel[0] ? productosCarrusel[0].price : 'N/A' }} €</p>
-                  <button class="comprar-button">Comprar</button>
+                  <button @click="mostrarDetalle(productosCarrusel[0].id,'hombre')" class="comprar-button">Ver mas</button>
               </div>
           </div>
         </div>
@@ -100,7 +100,7 @@
               <div class="infoOfertaBot">
                   <h2 class="porcentageOferta" >¡30% de descuento!</h3>
                   <p class="precio">{{ productosCarrusel[2] ? productosCarrusel[2].price : 'N/A' }} €</p>
-                  <button class="comprar-button">Comprar</button>
+                  <button @click="mostrarDetalle(productosCarrusel[2].id,'hombre')" class="comprar-button">Ver mas</button>
               </div>
           </div>
   </div>
